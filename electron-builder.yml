@@ -1,0 +1,52 @@
+appId: com.wenbo.feishunote
+productName: FeishuNote
+directories:
+  output: release
+  buildResources: build
+electronDist: node_modules/electron/dist
+npmRebuild: false
+files:
+  - out/**
+  - package.json
+  - node_modules/**
+asarUnpack:
+  - node_modules/better-sqlite3/**
+mac:
+  target:
+    - target: dmg
+      arch:
+        - x64
+  category: public.app-category.productivity
+  darkModeSupport: true
+  identity: null
+  hardenedRuntime: false
+  gatekeeperAssess: false
+  extendInfo:
+    LSMinimumSystemVersion: '12.0'
+    NSDocumentsFolderUsageDescription: FeishuNote 需要访问“文稿”文件夹来保存你的本地文档库。
+dmg:
+  artifactName: FeishuNote-${version}-x64.dmg
+  title: FeishuNote ${version}
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: build/icon.ico
+  requestedExecutionLevel: asInvoker
+  artifactName: ${productName}-Setup-${version}-x64.${ext}
+
+nsis:
+  oneClick: false
+  installerLanguages:
+    - zh_CN
+  displayLanguageSelector: false
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  installerHeaderIcon: build/icon.ico
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: FeishuNote
